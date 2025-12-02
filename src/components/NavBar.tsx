@@ -9,7 +9,14 @@ interface NavBarProps {
 const NavBar = ({ onSearch }: NavBarProps) => {
   return (
     <HStack padding="10px">
-      <Image src={logo} boxSize="60px" />
+      <Image
+        onClick={() => {
+          globalThis.location.reload();
+          console.log("logo clicked");
+        }}
+        src={logo}
+        boxSize="60px"
+      />
       <SearchInput onSearch={(searchText) => onSearch(searchText)} />
       <ColorModeSwitch />
     </HStack>
