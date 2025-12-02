@@ -1,3 +1,4 @@
+import type { GameQuery } from "../App";
 import useData from "./useData";
 import type { Genre } from "./useGeneres";
 
@@ -14,14 +15,16 @@ export interface Platform {
   slug: string;
 }
 
-const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) => {
+const useGames = (gameQuery: GameQuery) => {
   const { data, error, isLoading } = useData<Game>(
     "/games", //endpoint
-    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } }, //optional params
-    [selectedGenre?.id, selectedPlatform?.id] //dependencies for useEffect
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+      },
+    }, //optional params
+    [gameQuery] //dependencies for useEffect
   );
 
   return { data, error, isLoading };
