@@ -24,7 +24,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: GenreListProps) => {
     <>
       <Heading fontSize="2xl" marginBottom={3}>
         Genres
-      </Heading>{" "}
+      </Heading>
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id}>
