@@ -1,6 +1,5 @@
 import type { GameQuery } from "../App";
 import useData from "./useData";
-import type { Genre } from "./useGeneres";
 
 export interface Game {
   id: number;
@@ -23,6 +22,7 @@ const useGames = (gameQuery: GameQuery) => {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
+        search: gameQuery.searchText,
       },
     }, //optional params
     [gameQuery] //dependencies for useEffect

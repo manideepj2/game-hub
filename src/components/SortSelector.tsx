@@ -1,5 +1,4 @@
 import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
-import { data } from "framer-motion/client";
 import { BsChevronDown } from "react-icons/bs";
 
 interface SortSelectorProps {
