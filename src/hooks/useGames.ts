@@ -9,13 +9,20 @@ export interface Game {
   metacritic: number;
 }
 export interface Platform {
-    id:number;
-    name:string;
-    slug:string;
+  id: number;
+  name: string;
+  slug: string;
 }
 
- const useGames = (selectedGenre :Genre|null) => {
-  const{data,error, isLoading}=useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id]);
+const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) => {
+  const { data, error, isLoading } = useData<Game>(
+    "/games", //endpoint
+    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } }, //optional params
+    [selectedGenre?.id, selectedPlatform?.id] //dependencies for useEffect
+  );
 
   return { data, error, isLoading };
 };
