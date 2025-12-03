@@ -15,6 +15,11 @@ const NavItems = ({ handleClick }: NavItemProps) => {
           display={{ base: "none", md: "block" }}
           onClick={() => handleClick(item.title)}
           cursor="pointer"
+          transition="all 0.1s ease-in-out"
+          _hover={{
+            fontSize: "lg",
+            fontWeight: "bold",
+          }}
         >
           {item.title}
         </Text>
