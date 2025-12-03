@@ -13,7 +13,7 @@ const HeadingAndList = ({
 }: HeadingAndListProps) => {
   return (
     <Box paddingTop={paddingTopValue}>
-      <Heading as="h2" marginY={2} fontSize="xl">
+      <Heading as="h2" marginY={2} fontSize="lg">
         {title} :
       </Heading>
       <Box as="ul" paddingLeft={5}>
