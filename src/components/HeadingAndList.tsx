@@ -12,7 +12,7 @@ const HeadingAndList = ({
   paddingTopValue,
 }: HeadingAndListProps) => {
   return (
-    <Box paddingTop={paddingTopValue}>
+    <Box paddingTop={paddingTopValue} paddingLeft={12}>
       <Heading as="h2" marginY={2} fontSize="lg">
         {title} :
       </Heading>

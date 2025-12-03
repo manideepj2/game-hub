@@ -9,6 +9,7 @@ import type { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 import AboutSite from "./components/AboutSite";
+import ContactDetails from "./components/ContactDetails";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -26,12 +27,13 @@ function App() {
   });
 
   const aboutRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   return (
     <Grid
       templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
+        base: `"nav" "main" "about"`,
+        lg: `"nav nav" "aside main" "about about"`,
       }}
       templateColumns={{ base: "1fr", lg: "200px 1fr" }}
     >
@@ -41,6 +43,8 @@ function App() {
           onNavItemClick={(title) => {
             if (title === "About Site") {
               aboutRef?.current?.scrollIntoView({ behavior: "smooth" });
+            } else if (title === "Contact Me") {
+              contactRef?.current?.scrollIntoView({ behavior: "smooth" });
             }
           }}
         />
@@ -73,8 +77,13 @@ function App() {
           </HStack>
         </Box>
         <GameGrid gameQuery={gameQuery} />
+      </GridItem>
+      <GridItem area="about">
         <div ref={aboutRef}>
           <AboutSite />
+        </div>
+        <div ref={contactRef}>
+          <ContactDetails />
         </div>
       </GridItem>
     </Grid>
