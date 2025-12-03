@@ -1,39 +1,20 @@
-import { Box, Flex, Heading, HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/logo.webp";
+import { Flex, Box } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
+import Brand from "./Brand";
 
 interface NavBarProps {
   onSearch: (searchText: string) => void;
 }
 const NavBar = ({ onSearch }: NavBarProps) => {
   return (
-    // <HStack padding="10px">
     <Flex flexDirection="row" alignItems="center" gap={2} padding="10px">
-      <Image
-        onClick={() => {
-          globalThis.location.reload();
-          console.log("logo clicked");
-        }}
-        src={logo}
-        boxSize="60px"
-        cursor="pointer"
-      />
-      <Heading
-        fontSize="2xl"
-        marginRight={2}
-        cursor="pointer"
-        onClick={() => {
-          globalThis.location.reload();
-          console.log("logo clicked");
-        }}
-      >
-        GameHub
-      </Heading>
-      <SearchInput onSearch={(searchText) => onSearch(searchText)} />
+      <Brand />
+      <Box flex={1} minW={0}>
+        <SearchInput onSearch={(searchText) => onSearch(searchText)} />
+      </Box>
       <ColorModeSwitch />
     </Flex>
-    // </HStack>
   );
 };
 
