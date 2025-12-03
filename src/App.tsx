@@ -64,7 +64,6 @@ function App() {
             />
           </HStack>
         </Box>
-
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
