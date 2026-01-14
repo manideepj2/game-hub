@@ -10,6 +10,8 @@ import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 import AboutSite from "./components/AboutSite";
 import ContactDetails from "./components/ContactDetails";
+import { useSelector } from "react-redux";
+import type { RootState } from "./store";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -26,6 +28,13 @@ function App() {
     searchText: "",
   });
 
+  const reduxSearchText = useSelector((state: RootState) => state.ui.searchText);
+
+  // Keep local gameQuery.searchText in sync with Redux search text
+  if (reduxSearchText !== gameQuery.searchText) {
+    setGameQuery({ ...gameQuery, searchText: reduxSearchText });
+  }
+
   const aboutRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +48,6 @@ function App() {
     >
       <GridItem area="nav">
         <NavBar
-          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
           onNavItemClick={(title) => {
             if (title === "About Site") {
               aboutRef?.current?.scrollIntoView({ behavior: "smooth" });

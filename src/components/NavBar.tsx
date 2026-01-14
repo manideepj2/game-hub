@@ -5,15 +5,14 @@ import Brand from "./Brand";
 import NavItems from "./NavItems";
 
 interface NavBarProps {
-  onSearch: (searchText: string) => void;
   onNavItemClick: (title: string) => void;
 }
-const NavBar = ({ onSearch, onNavItemClick }: NavBarProps) => {
+const NavBar = ({ onNavItemClick }: NavBarProps) => {
   return (
     <Flex flexDirection="row" alignItems="center" gap={2} padding="10px">
       <Brand />
       <Box flex={1} minW={0}>
-        <SearchInput onSearch={(searchText) => onSearch(searchText)} />
+        <SearchInput />
       </Box>
       <NavItems handleClick={(title) => onNavItemClick(title)} />
       <ColorModeSwitch />
